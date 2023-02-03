@@ -10,8 +10,6 @@ function BookEdit({ book, onSubmit }) {
     const handleSubmit =(event) => {
         event.preventDefault();
         onSubmit(book.id, title);
-
-        console.log('New title is', title);
     };
 
     return (
