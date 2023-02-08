@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 import axios from "axios";
 
 
-const BookskContext = createContext();
+const BooksContext = createContext();
 
 function Provider({ children }) {
     const [books, setBooks] = useState([]);
@@ -58,11 +58,11 @@ function Provider({ children }) {
     };
 
     return (
-        <BookskContext.Provider value={ valueToShare }>
+        <BooksContext.Provider value={ valueToShare }>
             {children}
-        </BookskContext.Provider>
+        </BooksContext.Provider>
     )
 }
 
 export { Provider }
-export default BookskContext;
+export default BooksContext;
