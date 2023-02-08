@@ -1,10 +1,11 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import BookEdit from "./BookEdit";
-import BooksContext from "../context/books";
+import useBookContext from '../hooks/use-books-context';
+
 
 function BookShow({ book }) {
     const [showEdit, setShowEdit] = useState(false);
-    const { deleteBookById} = useContext(BooksContext);
+    const { deleteBookById } = useBookContext();
 
     const handleDeleteClick = () => {
         deleteBookById(book.id);
@@ -20,7 +21,7 @@ function BookShow({ book }) {
 
     let content = <h3>{book.title}</h3>;
     if (showEdit) {
-        content = <BookEdit onSubmit={handleSubmit} book={book}/>
+        content = <BookEdit onSubmit={handleSubmit} book={book} />
     }
 
     return (
@@ -28,10 +29,10 @@ function BookShow({ book }) {
             <img
                 alt="books"
                 src={`https://picsum.photos/seed/${book.id}/300/200`}
-                />
-           <div>{content}</div>
+            />
+            <div>{content}</div>
             <div className="actions">
-            <button className="edit" onClick={handleEditClick}>
+                <button className="edit" onClick={handleEditClick}>
                     Edit
                 </button>
                 <button className="delete" onClick={handleDeleteClick}>
